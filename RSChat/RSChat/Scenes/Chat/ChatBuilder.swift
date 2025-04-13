@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum ChatBuilder {
+    static func build() -> ChatViewController {
+        let vc = ChatViewController()
+        return vc
+    }
+}

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BEE143822DABD59800565C22 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEE143812DABD59800565C22 /* SnapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BEE143482DABCC3600565C22 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -48,16 +52,6 @@
 			path = RSChat;
 			sourceTree = "<group>";
 		};
-		BEE1434A2DABCC3600565C22 /* RSChatTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RSChatTests;
-			sourceTree = "<group>";
-		};
-		BEE143542DABCC3600565C22 /* RSChatUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RSChatUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEE143822DABD59800565C22 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,8 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				BEE143332DABCC3500565C22 /* RSChat */,
-				BEE1434A2DABCC3600565C22 /* RSChatTests */,
-				BEE143542DABCC3600565C22 /* RSChatUITests */,
 				BEE143322DABCC3500565C22 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,6 +118,7 @@
 			);
 			name = RSChat;
 			packageProductDependencies = (
+				BEE143812DABD59800565C22 /* SnapKit */,
 			);
 			productName = RSChat;
 			productReference = BEE143312DABCC3500565C22 /* RSChat.app */;
@@ -142,9 +136,6 @@
 			);
 			dependencies = (
 				BEE143492DABCC3600565C22 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BEE1434A2DABCC3600565C22 /* RSChatTests */,
 			);
 			name = RSChatTests;
 			packageProductDependencies = (
@@ -165,9 +156,6 @@
 			);
 			dependencies = (
 				BEE143532DABCC3600565C22 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BEE143542DABCC3600565C22 /* RSChatUITests */,
 			);
 			name = RSChatUITests;
 			packageProductDependencies = (
@@ -208,6 +196,9 @@
 			);
 			mainGroup = BEE143282DABCC3500565C22;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BEE143802DABD59800565C22 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BEE143322DABCC3500565C22 /* Products */;
 			projectDirPath = "";
@@ -567,6 +558,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BEE143802DABD59800565C22 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BEE143812DABD59800565C22 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEE143802DABD59800565C22 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BEE143292DABCC3500565C22 /* Project object */;
 }
