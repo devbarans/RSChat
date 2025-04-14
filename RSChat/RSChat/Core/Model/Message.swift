@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Message {
+    let id: String
+    let content: String
+    let isSentByUser: Bool
+}

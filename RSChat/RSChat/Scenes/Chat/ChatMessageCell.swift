@@ -15,22 +15,20 @@ final class ChatMessageCell: UITableViewCell {
     // MARK: - UI Elements
     private lazy var bubbleView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray6
         view.layer.cornerRadius = 12
+        view.clipsToBounds = true
         return view
     }()
     
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Hellloooo"
         label.font = .systemFont(ofSize: 17, weight: .medium)
         label.textColor = .label
         return label
     }()
     
-    
-    // MARK: - İnitialization
+    // MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -42,19 +40,22 @@ final class ChatMessageCell: UITableViewCell {
     }
 }
 
-// MARK: - Setup & Layout
+// MARK: - Setup
 private extension ChatMessageCell {
-     func setup(){
+    func setup() {
         contentView.addSubview(bubbleView)
         bubbleView.addSubview(messageLabel)
-        
         selectionStyle = .none
+        backgroundColor = .clear
     }
-    
-     func layout(){
+}
+
+// MARK: - Layout
+private extension ChatMessageCell {
+    func layout() {
         bubbleView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(8)
-            make.leading.equalToSuperview().inset(16)
+            make.leading.greaterThanOrEqualToSuperview().inset(16)
             make.trailing.lessThanOrEqualToSuperview().inset(16)
             make.bottom.equalTo(messageLabel.snp.bottom).offset(8)
         }
@@ -64,7 +65,31 @@ private extension ChatMessageCell {
             make.leading.equalTo(bubbleView).inset(12)
             make.trailing.equalTo(bubbleView).inset(12)
         }
+    }
+}
+
+// MARK: - Configuration
+extension ChatMessageCell {
+    public func configure(with message: Message) {
+        messageLabel.text = message.content
+        bubbleView.backgroundColor = message.isSentByUser ? .systemBlue : .systemGray6
+        messageLabel.textColor = message.isSentByUser ? .white : .label
         
+        bubbleView.snp.remakeConstraints { make in
+            make.top.equalToSuperview().inset(8)
+            if message.isSentByUser {
+                make.leading.greaterThanOrEqualToSuperview().inset(100)
+                make.trailing.equalToSuperview().inset(16)
+            } else {
+                make.leading.equalToSuperview().inset(16)
+                make.trailing.lessThanOrEqualToSuperview().inset(100)
+            }
+            make.bottom.equalTo(messageLabel.snp.bottom).offset(8)
+        }
+
+        
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }
 
@@ -72,3 +97,5 @@ private extension ChatMessageCell {
 #Preview {
     ChatBuilder.build()
 }
+
+

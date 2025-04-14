@@ -14,6 +14,7 @@ final class ChatView: UIView {
         let table = UITableView(frame: .zero, style: .plain)
         table.separatorStyle = .none
         table.allowsSelection = false
+        table.rowHeight = UITableView.automaticDimension
         table.register(ChatMessageCell.self, forCellReuseIdentifier: ChatMessageCell.reuseID)
         return table
         
@@ -21,10 +22,8 @@ final class ChatView: UIView {
     
     private lazy var sentButton : UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sent", for: .normal)
+        button.setImage(UIImage(systemName: "arrowshape.right.circle"), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        button.tintColor = .systemBlue
         button.layer.cornerRadius = 8
         return button
     }()
@@ -41,10 +40,14 @@ final class ChatView: UIView {
     }()
     
     private lazy var inputStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [textView,sentButton])
+        let spacer = UIView()
+        spacer.backgroundColor = .clear
+        spacer.widthAnchor.constraint(equalToConstant: 8).isActive = true
+        
+        let stack = UIStackView(arrangedSubviews: [spacer,textView,sentButton])
         stack.axis = .horizontal
         stack.spacing = 8
-        stack.distribution = .equalCentering
+        stack.distribution = .fill
         stack.alignment = .center
         stack.backgroundColor = .systemGray6
         return stack
@@ -62,14 +65,16 @@ final class ChatView: UIView {
     }
     
 }
-// MARK: - Setup & Layout
+// MARK: - Setup
 private extension ChatView {
     func setup(){
         addSubview(tableView)
         addSubview(inputStackView)
-        
     }
-    
+}
+
+// MARK: - Layout
+private extension ChatView {
     func layout(){
         tableView.snp.makeConstraints { make in
             make.top.left.right.equalTo(safeAreaLayoutGuide)

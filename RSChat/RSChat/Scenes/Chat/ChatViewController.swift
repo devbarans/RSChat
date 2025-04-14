@@ -9,6 +9,13 @@ import UIKit
 
 final class ChatViewController: UIViewController {
     
+    // MARK: - Properties (Test)
+    let messagesArray: [Message] = [
+        Message(id: UUID().uuidString, content: "Heyy swift", isSentByUser: false),
+        Message(id: UUID().uuidString, content: "Hello rust", isSentByUser: true),
+    
+    ]
+    
     //MARK: Dependencies
     private let chatView = ChatView()
 
@@ -36,11 +43,15 @@ final class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        messagesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatMessageCell.reuseID) as? ChatMessageCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ChatMessageCell.reuseID) as? ChatMessageCell
+        else { return UITableViewCell() }
+
+        cell.configure(with: messagesArray[indexPath.row])
         return cell
     }
     
