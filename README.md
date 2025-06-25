@@ -33,7 +33,7 @@ RSChat is a real-time chat application for iOS, built with a modern MVVM archite
 - **Language**: Rust
 - **Protocol**: TCP socket for real-time communication
 - **Purpose**: Handles client connections and message relaying
-- **Repository**: [Rust Server] https://github.com/BaranBaranDev/TCP-Chat
+- **Repository**: [Rust Server] https://github.com/devbarans/TCP-Chat
 
 
 ## Installation
