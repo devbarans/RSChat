@@ -41,5 +41,5 @@ RSChat is a real-time chat application for iOS, built with a modern MVVM archite
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/BaranBaranDev/RSChat.git
+git clone https://github.com/devbarans/RSChat.git
 cd RSChat
